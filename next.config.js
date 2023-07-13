@@ -6,7 +6,7 @@ const nextConfig = {
       {
         source: "/:path*",
         destination: "/very/deeply/nested/:path*",
-        
+        locale: false,
       },
     ] || [],
 };
