@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import styles from '../../../../../styles/Home.module.css';
-
-export default function Home() {
+const SlugPage = ({ ts }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,9 +9,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className={styles.title}>
-          Very deeply nested template
-        </h1>
+        <h1 className={styles.title}>Vey deeply nested template page + {ts}</h1>
       </main>
 
       <footer>
@@ -21,7 +18,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
         </a>
       </footer>
@@ -77,5 +74,22 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
+
+export const getStaticPaths = async () => {
+  return {
+    paths: ["/very/deeply/nested/template/", "/very/deeply/nested/template/test"],
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      ts: Date.now(),
+    },
+  };
+};
+
+export default SlugPage;
